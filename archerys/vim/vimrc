@@ -1,0 +1,12 @@
+set nocompatible
+colorscheme jaco
+set backspace=indent,eol,start
+set wildmenu
+set autoindent
+set tabstop=3 softtabstop=3
+set showcmd
+inoremap ( ()<left>
+inoremap { {}<left>
+inoremap " ""<left>
+inoremap ' ''<left>
+inoremap [ []<left>
