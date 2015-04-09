@@ -1,6 +1,12 @@
 set nocompatible
-colorscheme jaco
+set t_Co=256
+set background=dark
+colorscheme molokai
+let g:molokai_original=1
+call pathogen#infect()
 set backspace=indent,eol,start
+map <F2> :NERDTreeToggle<cr>
+map <F3> :syntax on<cr>
 set wildmenu
 set autoindent
 set tabstop=3 softtabstop=3
@@ -10,3 +16,4 @@ inoremap { {}<left>
 inoremap " ""<left>
 inoremap ' ''<left>
 inoremap [ []<left>
+inoremap < <><left>
