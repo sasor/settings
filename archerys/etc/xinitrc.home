@@ -1,0 +1,25 @@
+##exec env GNOME_SHELL_SESSION_MODE=classic gnome-session --session gnome-classic
+
+DEFAULT_SESSION=twm
+
+case $1 in
+gnome        )
+		exec gnome-session 
+		;;
+gnome-classic)
+		####exec gnome-session --session=gnome-classic
+		exec env GNOME_SHELL_SESSION_MODE=classic gnome-session --session gnome-classic
+		;;
+dwm          )
+		sh ./.bada
+		feh --bg-scale '$HOME/.config/local/pictures/a1.jpg'
+		pulseaudio --start
+		wmname L3GD&
+		exec dwm
+		;;
+*)
+		exec $DEFAULT_SESSION
+		;;
+esac
+
+
