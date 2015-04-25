@@ -1,0 +1,10 @@
+#
+# ~/.bash_profile
+#
+
+[[ -f ~/.bashrc ]] && . ~/.bashrc
+
+###
+# new $PATH's
+###
+export PATH=${PATH}:/home/archer/.cabal/bin
