@@ -1,0 +1,26 @@
+#
+# ~/.bashrc
+#
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+###
+# new $PATH's
+###
+export PATH=${PATH}:/home/archer/.cabal/bin
+export EDITOR="vim"
+
+###
+# aliases
+###
+#alias ls='ls --color=auto'
+#alias cp='cp -i'
+#alias mv='mv -i'
+alias montar='udisksctl mount --block-device'
+alias desmontar='udisksctl unmount --block-device'
+
+###
+# PS1
+###
+PS1='[\u@\h \W]\$ '
