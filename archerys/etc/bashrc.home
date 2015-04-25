@@ -6,12 +6,6 @@
 [[ $- != *i* ]] && return
 
 ###
-# new $PATH's
-###
-export PATH=${PATH}:/home/archer/.cabal/bin
-export EDITOR="vim"
-
-###
 # aliases
 ###
 #alias ls='ls --color=auto'
