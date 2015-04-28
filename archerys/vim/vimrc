@@ -1,19 +1,52 @@
-set nocompatible
+" All system-wide defaults are set in $VIMRUNTIME/archlinux.vim (usually just
+" /usr/share/vim/vimfiles/archlinux.vim) and sourced by the call to :runtime
+" you can find below.  If you wish to change any of those settings, you should
+" do it in this file (/etc/vimrc), since archlinux.vim will be overwritten
+" everytime an upgrade of the vim packages is performed.  It is recommended to
+" make changes after sourcing archlinux.vim since it alters the value of the
+" 'compatible' option.
+
+" This line should not be removed as it ensures that various options are
+" properly set to work with the Vim-related packages.
+runtime! archlinux.vim
+
+" If you prefer the old-style vim functionalty, add 'runtime! vimrc_example.vim'
+" Or better yet, read /usr/share/vim/vim74/vimrc_example.vim or the vim manual
+" and configure vim to your own liking!
+"
+" fixing all general
+"
+filetype plugin indent on
 set t_Co=256
-set background=dark
-colorscheme molokai
-let g:molokai_original=1
-call pathogen#infect()
-set backspace=indent,eol,start
-map <F2> :NERDTreeToggle<cr>
-map <F3> :syntax on<cr>
-set wildmenu
 set autoindent
-set tabstop=3 softtabstop=3
-set showcmd
-inoremap ( ()<left>
-inoremap { {}<left>
-inoremap " ""<left>
-inoremap ' ''<left>
-inoremap [ []<left>
-inoremap < <><left>
+set wildmenu
+set number
+set showbreak=> 
+set laststatus=2
+set tabstop=3 shiftwidth=3 softtabstop=3
+
+" airline 
+"
+"let g:airline_power_fonts=1
+let g:airline#extensions#tabline#enabled=1
+let g:airline_theme="luna"
+
+" pathogen setup
+"
+execute pathogen#infect()
+
+" shortcut maps
+"
+noremap <F2> :NERDTreeToggle<CR>
+
+" define maps
+"
+let mapleader=','
+
+" maps for html files
+augroup htmlCmds
+	autocmd!
+	autocmd Filetype html inoremap <leader>lorem Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<CR>
+	autocmd Filetype html setlocal tabstop=2 shiftwidth=2 softtabstop=2 	
+	autocmd Filetype html nnoremap <leader>c I<!--<esc>A--><esc>
+augroup END
