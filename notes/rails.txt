@@ -1,0 +1,4 @@
+###
+# to install rails is better 
+###
+gem install --no-user-install --no-document   ---> as root user
