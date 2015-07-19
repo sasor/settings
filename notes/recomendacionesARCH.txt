@@ -1,0 +1,45 @@
+###
+# paquetes q deben ser instalados en conjunto @before de las fuentes
+###
+xorg-xprop
+xorg-xfontsel
+xorg-fonts-100dpi
+xorg-fonts-75dpi
+xorg-xinput
+xorg-fonts
+xorg-xlsfonts
+xorg-xset
+xorg-xrdb
+xorg-xfd
+t1utils
+
+###
+# pasos para instalar xmonad
+# cabal install xmonad need xorg-xrandr
+###
+install ghc 				repo-offi
+install cabal-install 		repo-offi
+export PATH="$PATH:/home/[user]/.cabal/bin --on-- .bashrc file
+cabal update       -- update cabal 
+cabal install xmonad
+cabal install xmonad-contrib
+-----------
+mkdir $HOME/.xmonad
+touch $HOME/.xmonad/xmonad.hs    --creamos file de configuracion main
+
+###
+# @before to execute ---mkinitcpio -p linux--- 
+# instalar estos pkgs
+###
+xz
+lzop
+lz4
+nfs-utils
+bzip2
+
+###
+# some pkg to install if... administrador nautilus no se visualiza bien
+###
+gnome-themes-standard
+gnome-icon-theme
+gnome-icon-theme-extras
