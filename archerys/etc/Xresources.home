@@ -1,0 +1,6 @@
+XTerm*faceName: DejaVuSansMono:size=9:style=Book
+XTerm*renderFont: true
+XTerm*termName: xterm-256color
+XTerm*locale: true
+Xterm*saveLines: 4096
+Xterm*VT100.geometry: 80x32
