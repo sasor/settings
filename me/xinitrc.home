@@ -1,0 +1,11 @@
+session=${1:-xfce}
+
+case $session in
+	xmonad		)
+					setxkbmap latam
+					feh --bg-scale $HOME/.xmonad/[wallpaper].jpg
+					xsetroot -cursor_name left_ptr &
+					exec xmonad;;
+	xfce|xfce4	)   		exec startxfce4;;
+	*		)   		exec $1;;
+esac
