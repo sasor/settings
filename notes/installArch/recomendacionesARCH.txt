@@ -50,4 +50,4 @@ libmad
 xine-lib
 libcanberra
 libcanberra-gstreamer
-jack2 or jack
+### jack2 or jack   --- algunos recomiendan que no es necesario,only for studios audio profesional
