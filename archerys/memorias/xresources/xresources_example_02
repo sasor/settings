@@ -1,0 +1,34 @@
+URxvt.font: -sgi-teh-medium-r-normal--10-0-72-72-m-0-iso8859-1
+!Options 
+URxvt.termName:rxvt-256color
+URxvt*urgentOnBell: true
+URxvt*visualBell: true
+URxvt*skipBuiltinGlyphs: true
+URxvt*termName: urxvt
+URxvt*borderless: true 
+URxvt*scrollBar: false
+URxvt*saveLines: 5000
+URxvt.transparent: false 
+resource underlineColor: red
+Urxvt.fading: 60
+
+URxvt.geometry: 90x40
+
+URxvt*perl-ext-common: matcher
+URxvt.colorUL: #86a2be
+URxvt*matcher.button: 1
+URxvt*matcher.pattern.1: \\bwww\\.[\\w-]+\\.[\\w./?&@URxvt-]*[\\w/-]
+
+URxvt.keysym.M-u: perl:mark-yank-urls:activate_mark_mode
+URxvt.underlineURLs: true
+URxvt.perl-lib: /home/ramon/.urxvt
+URxvt.perl-ext: selection,mark-yank-urls
+URxvt*urlLauncher: opera
+
+!Cursor
+URxvt*cursorColor: #803232
+URxvt*cursorBlink: true
+Xcursor.size: 6 
+
+!Colours
+#include "/home/ramon/.colours/sept"

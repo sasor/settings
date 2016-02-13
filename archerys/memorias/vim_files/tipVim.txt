@@ -1,0 +1,4 @@
+syntax on
+set number
+map <F9> :!javac % <Return>
+map <F10> :!java %:r <Return>

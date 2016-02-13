@@ -1,0 +1,22 @@
+# 
+
+# deb cdrom:[Debian GNU/Linux 7.2.0 _Wheezy_ - Official amd64 DVD Binary-1 20131012-14:05]/ wheezy contrib main
+
+#deb cdrom:[Debian GNU/Linux 7.2.0 _Wheezy_ - Official amd64 DVD Binary-1 20131012-14:05]/ wheezy contrib main
+
+# Line commented out by installer because it failed to verify:
+deb http://security.debian.org/ wheezy/updates main contrib
+# Line commented out by installer because it failed to verify:
+deb-src http://security.debian.org/ wheezy/updates main contrib
+
+# wheezy-updates, previously known as 'volatile'
+# A network mirror was not selected during install.  The following entries
+# are provided as examples, but you should amend them as appropriate
+# for your mirror of choice.
+#
+#deb http://ftp.debian.org/debian/ wheezy-updates main contrib
+#deb-src http://ftp.debian.org/debian/ wheezy-updates main contrib
+deb http://ftp.debian.org/debian/ wheezy main contrib
+deb-src http://ftp.debian.org/debian/ wheezy main contrib
+
+deb http://http.debian.net/debian/ wheezy-backports main contrib non-free 

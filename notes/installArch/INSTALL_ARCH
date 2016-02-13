@@ -1,0 +1,169 @@
+########################## INSTALACION DE ARCH LINUX ############################
+
+--descarga la iso y haz booteable tu pendrive!! con el comando ::
+         
+              dd bs=4M if=/ruta/al/isoDeArch of=/dev/sdbX
+
+--donde sdbX es el pendrive (el pendrive tiene que estar desmontado!!)
+--elige la arquitectura de tu maquina!!LISTO!!
+
+PASOS A SEGUIR ::
+
+--establecemos la distribucion del teclado con el comando ::
+
+1)             loadkeys la-latin1
+
+--reemplazas --la-latin1-- por otra distribucion (es=español , us=ingles)
+
+--lo sgte es preparar tu disco duro osea particionar,ejecutando ::
+
+2)                  cfdisk
+                        
+--una vez particionado, lo guardas y sales con "Quit"
+
+--el sgte paso es formatear las particiones creadas ::
+
+3)      hay 2 formas de formatear tus particiones :
+        opcion 1 :  mkfs -t ext4 /dev/sdaX
+        opcion 2 :  mkfs.ext4 /dev/sdaX
+ 
+        para formatear una particion SWAP :
+                 :  mkswap /dev/sdaX       
+        una vez formateada debemos habilitar la particion SWAP :
+                 :  swapon /dev/sdaX
+
+--(lo recomendable para formatear una particion --boot-- si hubiera, es dandole el formato --ext2--
+-- por su estabilidad)
+
+--montar las particiones ::
+
+4)      primero montamos la particion raiz(/) en /mnt :
+                 : mount /dev/sdaX /mnt
+
+        lo sgte es crear los directorios para la home y boot en /mnt
+                 : mkdir /mnt/boot
+                 : mkdir /mnt/home
+
+        y montamos las particiones q'faltan
+                 : mount /dev/sdaX /mnt/boot
+                 : mount /dev/sdaX /mnt/home
+
+--verificamos con el comando -lsblk- si estan montadas y lo sgte seria la conexion a internet!!
+
+--instalar el sistema base y otros ::
+
+5)      con el script pacstrap instalamos lo sgte :
+                 : pacstrap /mnt base base-devel
+                 : pacstrap /mnt grub-bios
+                 : pacstrap /mnt networkmanager
+                 : pacstrap /mnt xf86-input-synaptics
+                 : pacstrap /mnt sudo 
+
+--hay que generar el archivo fstab ::
+
+6)     tecleando : genfstab -U -p /mnt >> /mnt/etc/fstab
+
+--una vez generado el archivo debemos verificar o revisar, si existieran errores basta con modificar 
+--el archivo fstab no!!!vuelva a ejecutar genfstab de nuevo
+
+7)              : arch-chroot /mnt
+
+--debemos establecer el nombre de nuestro equipo o -hostname- ubicado en /etc/hostname
+--editamos el archivo q'se encuentra vacio y colocamos el nombre q'queramos para nuestra maquina ::
+
+8)      hay 2 formas para realizar este paso :
+        opcion1 : echo nombreDeLaMaquina >> /etc/hostname
+
+        opcion2 : nano /etc/hostname (pones tu! el nombre y lo guardas)      
+
+--ahora vamos a establecer la zona horaria
+
+9)      vamos hacer un enlace simbolico :
+        ln -sf /usr/share/zoneinfo/<Zona>/<Subzona> /etc/localtime
+
+--un e.g. seria -ln -sf /usr/share/zoneinfo/America/La_Paz /etc/localtime-
+
+--el sgte paso seria establecer las de preferencias de localizacion,tomaremos en este caso
+--mi localizacion (Bolivia) ::
+
+10)     existen 2 opciones para realizar este paso :
+        opcion 1 : echo LANG=es_BO.UTF-8 >> /etc/locale.conf
+
+        opcion 2 : seria editar con nano el archivo q'se encuentra vacio, -/etc/locale.conf-
+                   colocando lo mismo q'la opcion 1 LANG...
+
+--ahora pasamos a activar nuestra localizacion editando el archivo locale.gen q'se encuentra
+--en /etc/locale.gen ::
+
+11)     lo q'debemos hacer es!! descomentar la linea en donde aparece --es_BO.UTF-8 UTF-8
+        guardar lo modificado y salir!!!! pero luego debes generar la localizacion con lo sgte :
+
+                        locale-gen
+
+--con este paso queda activado nuestra localizacion
+
+--lo sgte es establecer nuestra distribucion de teclado ::
+
+12)     1ro creamos el archivo sino existiese : touch /etc/vconsole.conf
+        2do editando el archivo creado tecleando :
+
+                     KEYMAP=la-latin1
+                     FONT=Lat2-Terminus16
+
+--lo anterior coloca nuestro teclado es -español latinoamericano-
+
+--instalamos el grub en la primera parte del disco ::
+
+13)          : grub-install /dev/sda
+
+--creamos el archivo grub.cfg ::
+
+14)          : grub-mkconfig -o /boot/grub/grub.cfg
+
+--reparamos el bug de grub ::
+
+15)          : cp /boot/grub/locale/en@quot.mo /boot/grub/locale/en_US.mo
+
+--ahora camos a generar el disco ramdisk inicial ::
+
+16)          : mkinitcpio -p linux
+
+--ahora vamos a establecer nuestra contraseña -root- ::
+
+17)          : passwd
+
+--lo sgte es salir del entorno --chroot-- o enjaulamiento ::
+
+18)          : exit
+
+--desmontar particiones, el sgte e.g es solo si creaste {/boot o /home} ::
+
+19)          opcion 1 : umount /mnt/{boot,home,}
+
+             opcion 2 desmontando una por una, en orden 
+                      : umount /mnt/boot
+                      : umount /mnt/home
+             al final : umount /mnt
+
+--(recomendable usar la 1ra opcion)
+
+--reiniciamos el sistema ::
+
+20 )         : reboot
+
+--una vez reiniciado el nuevo sistema debemos crear un usuario ::
+
+21)          utilizando el comando sgte 
+             : useradd -m -g users -G audio,disk,network,power,storage,video,wheel,mpd -s /bin/bash [nameOfUser]
+             generamos una contraseña para el nuevo usuario
+             : passwd [nameOfUser]
+
+--ahora solo activas el grupo -wheel- editando el archivo /etc/sudoers, descomentando -#- al
+--principio de la linea donde esta -wheel-
+
+--vamos a activar NetworkManager ::
+
+22)          :systemctl enable NetworkManager.service
+
+--para ejecutar basta con cambiar -enable- X -start- o -status- para ver el estado en que se encuentra
+-- y otra vez reiniciamos el sistema ---reboot---

@@ -1,0 +1,19 @@
+syntax enable
+colorscheme vivify
+" es una forma de realizar
+
+set background=dark
+
+set number
+set mouse=a
+set hlsearch
+set autoindent
+set tabstop=3
+set shiftwidth=3
+set foldmethod=syntax
+set foldmethod=indent
+filetype plugin on
+set cindent
+set showcmd
+set showmatch
+set ignorecase

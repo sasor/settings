@@ -1,0 +1,15 @@
+ while xsetroot -name "`date` `uptime | sed 's/.*,//'`"
+    do
+    	sleep 1
+    done &
+
+ while xsetroot -name "$( acpi -b | awk '{ print $3, $4 }' | tr -d ',' )"
+    do
+        sleep 1m 
+    done &
+
+xcompmgr &
+wmname &
+xrdb -merge ~/.Xresources 
+sh ~/.fehbg
+exec dwm

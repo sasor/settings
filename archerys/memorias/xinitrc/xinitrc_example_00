@@ -1,0 +1,10 @@
+ while xsetroot -name " $( date | awk '{ print $1, $3, $2, $4 }') | $( acpi -b | awk '{ print $3, $4 }' | tr -d ',' )"
+    do
+    	sleep 1
+    done &
+
+xcompmgr &
+wmname &
+xrdb -merge ~/.Xresources 
+sh ~/.fehbg
+exec dwm

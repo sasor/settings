@@ -1,3 +1,0 @@
-[[ -f $HOME/.Xresources ]] && xrdb -merge $HOME/.Xresources
-setxkbmap latam
-exec awesome

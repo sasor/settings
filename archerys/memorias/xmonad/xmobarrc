@@ -1,0 +1,25 @@
+Config{
+  font = "xft:Monaco-8:antialias=true:bold",
+  bgColor = "#001620",
+  fgColor = "#E9D331",
+  position = BottomW L 90,
+
+  commands = [
+    Run Cpu [ "-H" , "50" , "--high" , "red" ] 10,
+
+    Run Memory [ "-t" , "Mem: <usedratio>%" ] 10,
+
+    Run Date "%H:%M:%S - %d/%m/%Y" "date" 10,
+
+    Run Battery ["-t","<acstatus>: <left> %  / <timeleft>" , "-L" , "50", "-H","75","-h","green","-n","yell","-l","#FF3811"] 10,
+
+    Run Com ".xmonad/get-volume" [] "myvolume" 10,
+
+    Run StdinReader
+  ],
+
+  sepChar = "%",
+
+  alignSep = "}{",
+
+  template = "%StdinReader% }{ <fc=#FEF215>|</fc> %battery% <fc=#FEF215>|</fc> %cpu% <fc=#FEF215>|</fc> %memory% <fc=#FEF215>|</fc> Vol: %myvolume% <fc=#FEF215>|</fc> <fc=#DFDFDF>%date%</fc>           "  }

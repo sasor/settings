@@ -1,0 +1,28 @@
+!titles terminal
+!URxvt.title:consola
+URxvt.font:-misc-fixed-medium-r-normal--13-120-75-75-c-70-iso8859-15
+!URxvt.font:-misc-fixed-bold-r-normal--13-120-75-75-c-70-iso8859-15
+
+!colors terminal
+!URxvt.background:black
+URxvt.depth:32
+URxvt.background:[50]#0f0f0f
+!URxvt.background:[40]#C8C8C8
+
+!colors fuentes
+!URxvt.foreground:#fffafa
+URxvt.foreground:#c0c0c0
+
+!tabs terminal
+URxvt.perl-ext-common:default,tabbed
+URxvt.perl-ext:default
+
+!quita esa cosa molesta en los costados
+URxvt.scrollBar:false
+
+!URxvt.tabbed.tab-bg:#0f0f0f
+!URxvt.tabbed.tab-fg:white
+
+!Para Xterm
+xterm*background:#0f0f0f
+xterm*foreground:#c0c0c0

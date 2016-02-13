@@ -1,0 +1,6 @@
+(xbindkey '(Alt Prior) "ncmpcpp prev")
+(xbindkey '(Alt Next) "ncmpcpp next")
+(xbindkey '("m:0x8" "c:110") "ncmpcpp play")
+(xbindkey '("m:0x8" "c:115") "ncmpcpp pause")
+(xbindkey '("m:0x8" "c:54") "cartelera")
+(xbindkey '("m:0x0" "c:107") "scrot")

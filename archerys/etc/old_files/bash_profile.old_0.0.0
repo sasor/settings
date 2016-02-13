@@ -1,8 +1,0 @@
-#
-# ~/.bash_profile
-#
-
-[[ -f ~/.bashrc ]] && . ~/.bashrc
-
-export PATH=${PATH}:$HOME/.gem/ruby/2.2.0/bin:$HOME/.node_modules/stylus/bin
-#export PATH

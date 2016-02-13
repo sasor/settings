@@ -1,0 +1,62 @@
+VARIABLE $PS1 :::::
+
+Una manera de configurar el aspecto visual de nuestra consola es de la sgte forma
+ 1ro algo previo
+       -- puedes poner "\033" o "\e" , es lo mismo no saldra error.
+       -- la "m" al final del codigo de color es necesaria.
+       -- al terminar el codigo de color es necesario poner "\[\033[0m\]", caso 
+          contrario el texto sgte tendra el color previamente definido.
+
+    
+
+
+He aqui algunos colores::::
+
+#Definir variables de color
+Color_Off='\[\033[0m\]'         # Resetear color
+
+# Regular Colors
+Black='\[\033[0;30m\]'    # Black
+Red='\[\033[0;31m\]'      # Red
+Green='\[\033[0;32m\]'    # Green
+Yellow='\[\033[0;33m\]'   # Yellow
+Blue='\[\033[0;34m\]'     # Blue
+Purple='\[\033[0;35m\]'   # Purple
+Cyan='\[\033[0;36m\]'     # Cyan
+White='\[\033[0;37m\]'    # White
+
+# Negrita osea mas claros!!!
+BBlack='\[\033[1;30m\]'   # Black
+BRed='\[\033[1;31m\]'     # Red
+BGreen='\[\033[1;32m\]'   # Green
+BYellow='\[\033[1;33m\]'  # Yellow
+BBlue='\[\033[1;34m\]'    # Blue
+BPurple='\[\033[1;35m\]'  # Purple
+BCyan='\[\033[1;36m\]'    # Cyan
+BWhite='\[\033[1;37m\]'   # White
+
+
+Ejemplos::
+
+  ---  \[\e[0;33m\]\u\[\e[0m\] \$  ----
+
+  ° \[\e[0;33m\]          # define color
+  ° \u                    # secuencia de escape , define nombre del usuario
+  ° \[\e[0m\]             # indica corte de color osea lo resetea al color normal
+  ° \$                    # indica que usuario eres, # si eres root, $ sino lo eres
+
+
+
+2da forma::
+
+variables previamente definidas.{como las de arriba osea los colores}
+
+Ejemplo::
+
+-Un PS1 normal  --- PS1='[\u@\h: \W]\$ '  ---
+
+la cambiamos por esta!!   
+     
+    ---PS1="${BGreen}[${Color_Off}\u${BGreen}@${Color_Off}\h:\W${BGreen}]${Color_Off} \$"
+
+es la misma pero coloreados los caracteres [,@,] nada mas!!!

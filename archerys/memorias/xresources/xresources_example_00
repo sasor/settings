@@ -1,0 +1,11 @@
+! color de la terminal
+!xterm*background: #C0C0C0 
+xterm*background: #1c1c1c 
+! color de las fuentes
+!xterm*foreground: #0F0F0F
+xterm*foreground: #a1a1a1
+xterm*cursorBlink: true
+!xterm*font: xft:Helvetica:pixelsize=10
+xterm*faceName: clean 
+xterm*faceSize: 9
+
