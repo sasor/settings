@@ -1,0 +1,37 @@
+-- System Operating Linux - Arch Distribution
+
+-- Requeriments:
+1 - dnsmasq -> hara de servidor dhcp, osea va asignar ips a nuestros clientes
+2 - cable de red -> para conectar las maquinas
+
+-- Install dnsmask
+1 - pacman -S dnsmasq
+
+-- Setup dnsmasq in /etc/dnsmasq.conf
+1 - Discomment o add 
+
+  interface=enp2s0 - [interfaz que va asignar ips en este caso la ethernet]
+  dhcp-range=192.168.1.50,192.168.1.150,12h - [rango de ips a asignar c/12h] 
+  
+-- Antes de iniciar el servicio dnsmasq set up la interfaz de asignara ips
+1 - ifconfig enp2s0 192.168.1.2 netmask 255.255.255.0
+
+-- Start service dnsmasq
+1 - systemctl start dnsmasq 
+
+-- Setting iptables
+1 - iptables --flush
+2 - iptables --table nat --flush
+3 - iptables --delete-chain
+4 - iptables --table nat --delete-chain
+5 - iptables --table nat --append POSTROUTING --out-interface [wlp1s0] -j MASQUE    RADE [wlp1s0 es mi interfaz wifi que tiene internet]
+6 - iptables --append FORWARD --in-interface [enp2s0] -j ACCEPT [enp2s0 es la       interfaz que va a compartir internet]
+7 - echo 1 > /proc/sys/net/ipv4/ip_forward
+8 - el cliente pide internet dhclient o dhcpcd
+
+-- Links help
+1 - bootlog.org/blog/2006/05/compartiendo-tu-conexion-a-internet-con-linux
+2 - http://www.ubuntu-es.org/node/178047#.WDfAYWJhl0s
+
+-- Finalizar
+1 - decir que los links no han sido probados,pero me parecieron buenos links
