@@ -1,0 +1,89 @@
+flex-box___properts
+:::: Necesariamente necesita una relacion padre-hijo (container)-(items)
+
+					                             MAIN SIZE
+					-----------------------------------------------------------------
+					|								|
+			    C		^								^
+			    R 	--->	------------------------ø----------------------------------------  <------- cross start
+			    O	|	|---------------  ------ø---------------------------------------|
+	         	    S	|	||		||	|				       ||     main axis
+			    S	|       øø----------------------------------------------------------------------------------->>
+			    	|  	||	1	||	|		2		       ||
+			    S	|	||  flex-item   ||	|	    flex-item		       ||
+			    I	|	|---------------  ------|---------------------------------------|
+			    Z	--->	------------------------|----------------------------------------  <------- cross end
+			    E           ^                       |                flex-container         ^
+			    		|			|                                       |
+					|			|                                       |
+					|			^<--cross axis		                |
+				    main start			^                                   main end
+
+
+:Propiedades que se usan en el contenedor (container)
+  -----------------------------------
+   |
+   |   :: Permite cambiar los ejes main y cross axis
+   |---flex-direction: row | row-reverse | column | column-reverse
+   |
+   |   :: Alinea los hijos respecto al eje principal (main axis)
+   |---justify-content: flex-start (default) | flex-end | space-between | space-around | center
+   |
+   |   :: Alinea los hijos respecto al eje secundario (cross axis), ademas cuando es single-line
+   |---align-items: stretch (default) | flex-start | flex-end | center | baseline
+   |
+   |   :: Alinea los hijos respecto al eje secundario (cross axis), cuando es multi-line
+   |---align-content: los mismos valores de align-items
+   |
+
+:Propiedades que se usan en los items (items)
+  -----------------------------------------
+   |
+   |   :: Sobre-escribe la propiedad align-items para un elemento
+   |---align-self: flex-start | flex-end | center
+   |
+   |   :: Define el tamanio de un elemento respecto al eje principal
+   |---flex-basis: [value]px | auto (default), quiere decir q su tamanio esta en funcion del contenido | incluso valor 0px   | 
+   |
+   |   :: 
+   |---flex-grow: factor de crecimiento*  | 0 (default) osea q no crezca
+   |
+   |  :: Lo opuesto a flex-grow
+   |---flex-shrink: factor de reduccion** | 1 (default) osea q se encoja para evitar desbordamientos
+   |
+   |  :: Es un shorthand para flex-grow flex-shrink flex-basis en ese orden
+   |---flex***: [flex-grow flex-shrink flex-basis] | eg--> flex: 0 1 auto (valores por defecto para este shorthand),son los values default de c/propiedad
+   |
+   |  :: 
+   |---order: 0 (default) | value
+
+
+* Tiene q ver cuanto de crecimiento tendra un elemento,este se calcula de la sgte manera:
+	espacio_disponible = X
+	suma de flex-grow = Y (es la suma de los items q tienen definido flex-grow)
+	unit_grow = X / Y
+  Luego el factor de crecimiento sera multiplicado con el unit_grow osea (factor de crecimiento * unit_grow),
+  y ese valor sera aniadido al tamanio del elemento.
+
+
+** Lo mismo q flex-grow
+	espacio_disponible: normalmente es un valor negativo ( -X )
+	suma_flex-shrink = Y
+	unit_shrink = -X / Y 
+  Luego el factor de reduccion sera multiplicado con el unit_shrink osea (factor de reduccion * unit_shrink),
+  y ese valor sera reducido al tamanio del elemento.
+
+
+*** Es una abreviacion
+	flex: 1 1 100px; equivale a:
+		flex-grow:1;
+		flex-shrink:1;
+		flex-basis:100px;
+   algunos casos de la propiedad FLEX
+	flex: none; = flex: 0 0 auto;
+	flex: auto; = flex: 1 1 auto;
+	flex: N;    = flex: N 0 0;
+
+
+
+			
