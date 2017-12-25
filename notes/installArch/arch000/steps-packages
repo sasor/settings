@@ -1,0 +1,33 @@
+# Instalacion del grub en Lenovo
+grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=grub
+
+## XORGs packages
+xorg-server xterm xorg-xinit xorg-xinput xorg-xauth xorg-xkbcomp xorg-xkbutils xorg-xload xorg-xsetroot xorg-xlsfonts xorg-xprop xorg-xrandr xorg-xrdb mesa xf86-video-amdgpu xorg-apps
+
+# THEN install
+git libzip lzip lbzip2 zip unzip rar libunrar unrar
+
+# ..
+instale el paquete bind-tools donde se encuentra el comando nslookup PERO tambien instale LDNS con el comando drill
+bind-tools ldns tabbed 
+
+# WM 
+xmonad xmonad-contrib xmonad-utils
+
+## THEN
+alsa-lib alsa-tools alsa-utils
+
+# THEN -- segun doc chromium tiene dependencia de ttf-liberation -- ver mas info
+ttf-liberation noto-fonts noto-fonts-extra ttf-sazanami ttf-roboto
+
+# THEN
+chromium
+
+# THEN configure mi terminal creando .Xresources file in my home directory
+
+# THEN
+# turn-off-beep-sound -- https://www.cyberciti.biz/faq/how-to-linux-disable-or-turn-off-beep-sound-for-terminal/
+xset b off OR set bell-style none in inputrc file /etc/inputrc
+
+# THEN install
+mpv mpd
