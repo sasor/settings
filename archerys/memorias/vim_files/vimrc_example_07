@@ -1,0 +1,15 @@
+set nocompatible
+set nolist
+
+set ts=4  " set tabstop=3 size of a hard tabstop
+set sw=4  " set shiftwidth=3 size of an indent
+set sts=4 " set softtabstop=3
+set et    " set expandtab always uses spaces instead of tab characters
+set tw=80 " set textwidth=80
+set nu    " set number
+syn on    " syntax on
+
+au FileType html setl ts=2 et sw=2 sts=2
+au FileType javascript setl ts=4 et sw=4 sts=4
+au FileType typescript setl ts=4 et sw=4 sts=4
+au FileType php setl ts=4 et sw=4 sts=4

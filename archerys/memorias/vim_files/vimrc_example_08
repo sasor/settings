@@ -1,0 +1,25 @@
+set nocp " set nocompatible
+set number
+set exrc " https://andrew.stwrt.ca/posts/project-specific-vimrc/
+set secure
+set ts=2 " tabstop=2
+set sw=2 " shifwidth=2 when indenting with '>', use 2 spaces width https://stackoverflow.com/questions/1878974/redefine-tab-as-4-spaces
+set et " expandtab - Expand TABs to spaces http://vim.wikia.com/wiki/Converting_tabs_to_spaces
+
+" For Vundle
+filetype off 
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'leafgarland/typescript-vim'
+call vundle#end()
+filetype plugin indent on
+filetype plugin on
+
+" For Nerd-Tree
+"autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+let NERDTreeShowHidden=1
+map <F2> :NERDTreeToggle<CR>
