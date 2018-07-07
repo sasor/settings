@@ -1,0 +1,8 @@
+# resuelve problemas con dependencias
+apt --fix-broken install
+
+# busca paquetes
+apt-cache search [package] | pager
+
+# detalle de un paquete
+apt-cache show [package]

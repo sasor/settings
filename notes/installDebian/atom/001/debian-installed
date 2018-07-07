@@ -1,0 +1,84 @@
+firmware-realtek
+firmware-iwlwifi
+vim
+xserver-xorg-video-dummy
+xserver-xorg-input-void
+xserver-xorg-core 
+xserver-xorg-legacy
+xinit
+x11-xserver-utils
+xserver-xorg-video-fbdev
+xserver-xorg-input-kbd
+xserver-xorg-input-mouse
+xserver-xorg-input-libinput
+xfonts-100dpi
+xfonts-75dpi
+xfonts-base
+xfonts-scalable
+xinput
+i3-wm
+i3blocks
+i3lock
+i3status
+rofi
+suckless-tools
+ttf-liberation
+fonts-liberation
+fonts-noto
+git
+zip unzip p7zip unrar p7zip-full p7zip-rar
+wpasupplicant
+iw net-tools
+exfat-utils dosfstools ntfs-3g
+mc mc-data
+build-essential -- development tools url:https://www.garron.me/en/go2linux/gnu-gcc-development-tools-linux-fedora-arch-debian.html
+
+texlive
+texlive-base
+texlive-fonts-recommended
+texlive-generic-recommended
+texlive-generic-extra
+texlive-latex-base
+texlive-latex-recommended
+etoolbox
+texlive-pictures
+texlive-bibtex-extra
+texlive-extra-utils
+texlive-font-utils
+texlive-fonts-extra
+texlive-formats-extra
+texlive-humanities
+texlive-latex-extra
+texlive-publishers
+texlive-science
+texlive-lang-english
+texlive-lang-spanish
+texlive-plain-extra
+zathura
+zathura-cb
+zathura-djvu
+mpc mpd
+alsa-utils alsa-tools
+pqiv
+ffmpeg
+gpm -- iniciar servicio
+
+## Install google-chrome - STEPs
+## URL::https://www.comoinstalarlinux.com/como-instalar-google-chrome-en-debian-9/
+echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list
+wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+apt update
+apt install google-chrome-stable
+
+# Steps for docker install
+# URL:https://docs.docker.com/install/linux/docker-ce/debian/
+# OTHERs urls:
+# https://blog.sleeplessbeastie.eu/2018/03/30/how-to-install-docker-on-debian-stretch/
+apt install apt-transport-https ca-certificates curl gnupg2 software-properties-common
+curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -
+echo "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable" | tee -a /etc/apt/sources.list.d/docker.list
+apt update
+apt-cache madison docker-ce  -- check or list version available
+apt install docker-ce
+usermod -aG docker [user]
+apt install docker-compose
