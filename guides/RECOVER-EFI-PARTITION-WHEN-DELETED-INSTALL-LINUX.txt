@@ -1,0 +1,67 @@
+Contexto
+Paso una vez que al instalar fedora linux v 30
+al particionar el disco (como siempre lo hago)
+elimine la particion EFI de windows o mas bien
+sobre-escribi dicha particion con la de fedora,
+todo bien instale correctamente FEDORA v30, reinicie
+la maquina pero no habia windows solamente fedora
+tonces instale os-prober para recuperar lo de windows
+pero nada, TONCES a la mente me vino la idea de que
+no debia matar la particion de EFI de windows, osea
+cuando elegimos la particion EFI para instalar linux
+no deberiamos formatearla sino dejarla tal como esta,
+imagino que ya fedora o cualquier distro se encargara
+de manejarlo.
+TONCES decidi recuperar dicha particion, para eso hice
+un WINDOWS booteable en un pendrive con un programa
+que descargue para bootear windows, luego entre a la
+opcion REPAIR, y desde terminal ejecutar comandos
+que en un principio me costo, PORQUE no se mucho de
+comandos en windows, probe diferentes formas googleando
+pero nada, al final di con una solucion, PERO
+perdiendo la instalacion reciente de FEDORA, el cual
+no me IMPORTO...
+los pasos a continuacion
+
+1 Paso: entrar a la consola de windows desde la opcion repair
+, hay otras formas como combinacion de SHIPT + Fn + 10
+2 Paso: seleccionar en que disco esta instalado el WIN
+  , en mi caso solo tengo un disco elijo opcion 0
+	SEL DISK 0 (listar que discos tengo LIST DISK)
+3 Paso: LIST VOL (listar las particiones o volumenes en el disco)
+  , SI NO ELIMINASTE TU PARTICION EFI, solo formatealo y asignale
+   una letra
+  SEL VOL [# de particion de EFI]
+  ASSIGN LETTER=S
+
+ o (cuando mataste tu particion EFI -- note no selecciono el volumen a crear
+	porque por defecto lo seleccciona - comprobar con LIST VOL)
+ 
+  CREATE PARTITION EFI size=260
+  FORMAT QUICK FS=FAT LABEL="System"
+  ASSIGN LETTER=S
+  CREATE PARTITION MSR SIZE=128 (IMPORTANTE CREAR ESTO)
+  EXIT (salir de diskpart)
+  BOOTREC /FIXBOOT 
+  BOOTREC /FIXMBR (OPCIONAL)
+  BCDBOOT C:\WINDOWS /S [LETRA ASIGNADA A EFI]: /F ALL 
+ 
+Para quitar particiones o volumenes 
+1ro SEL VOL [volumen a eliminar]
+2do DELETE PARTITION 
+ o sino te deja
+    DELETE PARTITION OVERRIDE
+
+Mas abajo enlaces que me ayudaron, el 1ro es para teoria
+del porque crear EFI y MSR (ambos si o si)
+intente su metodo pero no funciono, los demas enlaces
+de ayuda estan para recordar 
+
+FIRTS:http://woshub.com/how-to-repair-deleted-efi-partition-in-windows-7/
+
+https://social.technet.microsoft.com/Forums/windows/en-US/6b16586e-574d-4a0b-ad68-aafcc7c599d1/bcdboot-failure-when-attempting-to-copy-boot-files?forum=w7itproinstall
+https://superuser.com/questions/1077372/diskpart-cant-delete-a-partition-without-the-force-protected-parameter-set
+http://si5228.blogspot.com/2015/06/solucion-al-problema-no-se-puede.html
+https://www.backup-utility.com/windows-10/restore-efi-partition-windows-10-8523.html
+https://www.disk-partition.com/windows-10/missing-efi-partition-windows-10.html  {este ayudo mucho}
+https://www.tenforums.com/drivers-hardware/126991-efi-partition-deleted.html {ni lo vi pero creo q hay info nomas}
